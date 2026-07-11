@@ -113,7 +113,7 @@ public class USBActivity extends AppCompatActivity {
       return;
     }
 
-    usbController.diffuseAll(DEFAULT_DURATION, true, Utility.convertToIntArray(ports));
+    usbController.shootAllSimple(DEFAULT_DURATION, true, Utility.convertToIntArray(ports));
     ports.clear();
   };
 }

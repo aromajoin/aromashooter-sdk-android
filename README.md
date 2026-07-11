@@ -1,6 +1,6 @@
-[English](https://github.com/aromajoin/controller-sdk-android) / [日本語](README-JP.md)
+[English](https://github.com/aromajoin/aromashooter-sdk-android) / [日本語](README-JP.md)
 
-# Controller SDK for Android
+# Aroma Shooter SDK (Android)
 
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.aromajoin.sdk/android/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.aromajoin.sdk/android)
 [![License](https://img.shields.io/badge/license-Apache%202-4EB1BA.svg?style=flat-square)](https://www.apache.org/licenses/LICENSE-2.0.html) 
@@ -18,7 +18,7 @@
       * [BLE](#bluetooth-ble)
       * [USB](#usb)
     * [Get connected devices](#get-connected-devices)
-    * [Diffuse scents](#diffuse-scents)
+    * [Shoot scents](#shoot-scents)
     * [Stop diffusing](#stop-diffusing)
 5. [License](#license)
 
@@ -111,10 +111,10 @@ Note: currently, it can control only 1 Aroma Shooter.
    * Diffuses aroma at device's ports.
    *
    * @param duration diffusing duration in milliseconds.
-   * @param booster whether booster is used or not.
-   * @param ports port numbers to diffuse aroma.
+   * @param internalBooster whether booster is used or not.
+   * @param chambers chamber numbers to shoot aroma.
    */
-  controller.diffuseAll(duration, booster, ports);
+  controller.shootAllSimple(duration, internalBooster, chambers);
   ```  
 * Diffuse scents method for AS2 (AromaShooter 2) devices only
 ```java
@@ -123,9 +123,9 @@ Note: currently, it can control only 1 Aroma Shooter.
  * @param duration              diffusing duration in milliseconds.
  * @param boosterIntensity      booster port. Value: 0~100.
  * @param fanIntensity          fan port. Value: 0~100.
- * @param ports                 array of ports. Value: Port(portNumber, portIntensity)
+ * @param chambers                 array of chambers. Value: AromaChamber(number, concentration)
  */
-controller.diffuseAll(duration, boosterIntensity, fanIntensity, ports);
+controller.shootAllWithIntensity(duration, internalBoosterIntensity, externalBoosterIntensity, chambers);
 ```
 ### Stop diffusing
   ```java
@@ -143,8 +143,8 @@ controller.diffuseAll(duration, boosterIntensity, fanIntensity, ports);
   ```
 
 
-**For more information, please checkout this repository and refer to the [sample project](https://github.com/aromajoin/controller-sdk-android/tree/master/sample).**  
-**If you get any issues or require any new features, please create a [new issue](https://github.com/aromajoin/controller-sdk-android/issues).**
+**For more information, please checkout this repository and refer to the [sample project](https://github.com/aromajoin/aromashooter-sdk-android/tree/master/sample).**  
+**If you get any issues or require any new features, please create a [new issue](https://github.com/aromajoin/aromashooter-sdk-android/issues).**
 
 ## License  
 Please check the [LICENSE](/LICENSE.md) file for the details.

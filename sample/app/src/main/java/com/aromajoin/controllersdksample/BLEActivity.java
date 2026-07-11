@@ -57,7 +57,7 @@ public class BLEActivity extends ASBaseActivity {
       return;
     }
     // Diffuse scents from selected ports of all connected devices.
-    bleController.diffuseAll(DEFAULT_DURATION, true, Utility.convertToIntArray(ports));
+    bleController.shootAllSimple(DEFAULT_DURATION, true, Utility.convertToIntArray(ports));
     ports.clear();
   };
 }
