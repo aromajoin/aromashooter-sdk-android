@@ -105,10 +105,10 @@ Note: currently, it can control only 1 Aroma Shooter.
   List<AromaShooter> aromaShooters = controller.getConnectedDevices();
   ```
 
-### Diffuse scents
+### Shoot scents
   ```java
   /**
-   * Diffuses aroma at device's ports.
+   * Shoots aroma at device's chambers.
    *
    * @param duration diffusing duration in milliseconds.
    * @param internalBooster whether booster is used or not.
@@ -116,10 +116,10 @@ Note: currently, it can control only 1 Aroma Shooter.
    */
   controller.shootAllSimple(duration, internalBooster, chambers);
   ```  
-* Diffuse scents method for AS2 (AromaShooter 2) devices only
+* Shoot scents method for AS2 (AromaShooter 2) devices only
 ```java
 /**
- * Diffuses aroma at specific ports from all connected devices.
+ * Shoots aroma at specific chambers from all connected devices.
  * @param duration              diffusing duration in milliseconds.
  * @param boosterIntensity      booster port. Value: 0~100.
  * @param fanIntensity          fan port. Value: 0~100.
