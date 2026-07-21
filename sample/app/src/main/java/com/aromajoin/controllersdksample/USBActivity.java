@@ -21,7 +21,7 @@ public class USBActivity extends AppCompatActivity {
   private static final String TAG = USBActivity.class.getSimpleName();
 
   private final int DEFAULT_DURATION = 3000; // Unit: millisecond
-  List<Integer> ports = new ArrayList<>(); // port-to-diffuse list
+  List<Integer> chambers = new ArrayList<>(); // chamber-to-shoot list
 
   private AndroidUSBController usbController;
 
@@ -88,32 +88,32 @@ public class USBActivity extends AppCompatActivity {
   };
 
   /**
-   * Gets ports and trigger diffusing scents
+   * Gets chambers and trigger diffusing scents
    */
   public void onClick(View view) {
     int viewId = view.getId();
     for (int i = 0; i < portIds.length; i++) {
       if (viewId == portIds[i]) {
-        ports.add(i + 1);
+        chambers.add(i + 1);
       }
     }
-    new Handler().postDelayed(diffuseTask, 10);
+    new Handler().postDelayed(shootTask, 10);
   }
 
   /**
-   * Uses runnable to send command which allows to diffuse multiple ports at the same time.
+   * Uses runnable to send command which allows shooting from multiple chambers at the same time.
    */
-  private Runnable diffuseTask = () -> {
-    if (ports.size() == 0) {
+  private Runnable shootTask = () -> {
+    if (chambers.size() == 0) {
       return;
     }
     List<AromaShooter> aromaShooters = usbController.getConnectedDevices();
     if (aromaShooters == null || aromaShooters.size() == 0) {
-      ports.clear();
+      chambers.clear();
       return;
     }
 
-    usbController.shootAllSimple(DEFAULT_DURATION, true, Utility.convertToIntArray(ports));
-    ports.clear();
+    usbController.shootAllSimple(DEFAULT_DURATION, true, Utility.convertToIntArray(chambers));
+    chambers.clear();
   };
 }

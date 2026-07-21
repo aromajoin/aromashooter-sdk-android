@@ -15,7 +15,7 @@ import java.util.List;
  */
 public class BLEActivity extends ASBaseActivity {
   private final int DEFAULT_DURATION = 3000; // Unit: millisecond
-  List<Integer> ports = new ArrayList<>(); // port-to-diffuse list
+  List<Integer> chambers = new ArrayList<>(); // chamber-to-shoot list
   private AndroidBLEController bleController;
 
   @Override protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -31,33 +31,33 @@ public class BLEActivity extends ASBaseActivity {
   };
 
   /**
-   * Gets ports and trigger diffusing scents
+   * Gets chambers and trigger diffusing scents
    */
   public void onClick(View view) {
     int viewId = view.getId();
     for (int i = 0; i < portIds.length; i++) {
       if (viewId == portIds[i]) {
-        ports.add(i + 1);
+        chambers.add(i + 1);
       }
     }
-    new Handler().postDelayed(diffuseTask, 10);
+    new Handler().postDelayed(shootTask, 10);
   }
 
   /**
-   * Uses runnable to send command which allows to diffuse multiple ports at the same time.
+   * Uses runnable to send command which allows shooting from multiple chambers at the same time.
    */
-  private final Runnable diffuseTask = () -> {
-    if (ports.size() == 0) {
+  private final Runnable shootTask = () -> {
+    if (chambers.size() == 0) {
       return;
     }
     List<AromaShooter> aromaShooters = bleController.getConnectedDevices();
     if (aromaShooters == null
         || aromaShooters.size() == 0) { // check whether there is any connected devices.
-      ports.clear();  // Clear buffered ports.
+      chambers.clear();  // Clear buffered chambers.
       return;
     }
-    // Diffuse scents from selected ports of all connected devices.
-    bleController.shootAllSimple(DEFAULT_DURATION, true, Utility.convertToIntArray(ports));
-    ports.clear();
+    // Shoot scents from selected chambers of all connected devices.
+    bleController.shootAllSimple(DEFAULT_DURATION, true, Utility.convertToIntArray(chambers));
+    chambers.clear();
   };
 }

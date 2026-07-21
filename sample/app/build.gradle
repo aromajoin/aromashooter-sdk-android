@@ -30,6 +30,6 @@ android {
 
 dependencies {
   implementation "androidx.appcompat:appcompat:1.3.1"
-  implementation "com.aromajoin.sdk:core:2.5.2"
-  implementation "com.aromajoin.sdk:android:2.4.6"
+  implementation "com.aromajoin.sdk:core:3.1.0"
+  implementation "com.aromajoin.sdk:android:3.1.0"
 }
