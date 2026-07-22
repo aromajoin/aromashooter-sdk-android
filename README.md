@@ -91,7 +91,7 @@ If you cannot use a dependency manager, the aar and jar are attached to the [lat
 | `ports` parameter | `chambers` |
 | `stopAllPorts()` | `stopAllChambers()` |
 
-`stopAllChambersWithIntensity()` is new in 3.1.0, on both controllers. It stops a shoot started with the intensity API; `stopAllChambers()` sends the shorter command, which does not stop it.
+`stopAllChambersWithIntensity()` is new in 3.1.0, on both controllers — before, the SDK could not send a valid intensity-stop frame at all. It and `stopAllChambers()` differ only in the protocol frame they send (21-byte vs 15-byte); **either one stops the device**, whichever API started the shoot.
 
 ---
 
@@ -204,7 +204,7 @@ controller.stopAllChambersWithIntensity();
 controller.stopAllChambersWithIntensity(aromaShooter);
 ```
 
-> The two APIs send different commands, and **each needs its own stop**. `stopAllChambers()` will not stop a shoot started with `shootWithIntensity*`.
+> `stopAllChambers()` and `stopAllChambersWithIntensity()` differ only in the protocol frame length (15-byte vs 21-byte). **Either one stops the device**, whichever API started the shoot.
 
 ---
 
@@ -231,7 +231,7 @@ For USB, disconnecting releases the USB connection; for BLE it closes the GATT c
 
 **Nothing comes out, but no error.** The internal booster is off. Pass `internalBooster: true`, or an `internalBoosterIntensity` above 0.
 
-**The scent does not stop.** You are probably calling the stop that belongs to the other API. Use `stopAllChambersWithIntensity()` after `shootWithIntensity*`, and `stopAllChambers()` after `shootSimple*`.
+**The scent does not stop.** Update to 3.1.0. Earlier versions sent a malformed intensity-stop frame, so a shoot started with `shootWithIntensity*` could keep running. From 3.1.0 either `stopAllChambers()` or `stopAllChambersWithIntensity()` halts the device.
 
 **A booster keeps running after you asked for 0.** Fixed in 3.1.0. Earlier versions left a channel untouched when its intensity was 0, and the device carried on with its previous instruction.
 
