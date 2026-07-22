@@ -4,7 +4,7 @@
 
 **Version 3.1.0**
 
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.aromajoin.sdk/android/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.aromajoin.sdk/android)
+[![Maven Central](https://img.shields.io/maven-central/v/com.aromajoin.sdk/android?style=flat-square&label=Maven%20Central)](https://central.sonatype.com/artifact/com.aromajoin.sdk/android)
 [![License](https://img.shields.io/badge/license-Apache%202-4EB1BA.svg?style=flat-square)](https://www.apache.org/licenses/LICENSE-2.0.html)
 
 An Android SDK for connecting to and controlling [Aroma Shooter devices](https://aromajoin.com/products/aroma-shooter) over **Bluetooth LE** and/or **USB**.
