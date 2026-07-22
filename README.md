@@ -223,7 +223,7 @@ For USB, disconnecting releases the USB connection; for BLE it closes the GATT c
 
 <a id="troubleshooting"></a>
 
-### Troubleshooting
+## Troubleshooting
 
 **No devices found over BLE on Android 12 or later.** `BLUETOOTH_SCAN` and `BLUETOOTH_CONNECT` are runtime permissions and have to be granted before scanning, not just declared in the manifest.
 
@@ -239,7 +239,7 @@ For USB, disconnecting releases the USB connection; for BLE it closes the GATT c
 
 <a id="license"></a>
 
-### License
+## License
 
 Please check the [LICENSE](/LICENSE.md) file for the details.
 
