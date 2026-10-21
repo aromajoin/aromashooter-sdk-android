@@ -2,14 +2,14 @@
 
 # Aroma Shooter SDK (Android)
 
-**Version 3.1.0**
+**Version 4.0.0**
 
 [![Maven Central](https://img.shields.io/maven-central/v/com.aromajoin.sdk/android?style=flat-square&label=Maven%20Central)](https://central.sonatype.com/artifact/com.aromajoin.sdk/android)
 [![License](https://img.shields.io/badge/license-Apache%202-4EB1BA.svg?style=flat-square)](https://www.apache.org/licenses/LICENSE-2.0.html)
 
 An Android SDK for connecting to and controlling [Aroma Shooter devices](https://aromajoin.com/products/aroma-shooter) over **Bluetooth LE** and/or **USB**.
 
-> **Important — the internal booster is required for scent to be emitted.** Enable it on every shoot: pass `internalBooster: true` (simple API) or `internalBoosterIntensity > 0` (intensity API). With the internal booster off, no scent comes out.
+> **Important — the inner booster is required for scent to be emitted.** Enable it on every shoot: pass `innerBooster: true` (simple API) or `innerBoosterIntensity > 0` (intensity API). With the inner booster off, no scent comes out.
 
 Your app picks the controller for the transport it needs and talks to that controller directly:
 
@@ -66,8 +66,8 @@ Both expose the same shooting and stopping API; only connection setup differs.
 
 ```gradle
 dependencies {
-    implementation "com.aromajoin.sdk:core:3.1.0"
-    implementation "com.aromajoin.sdk:android:3.1.0"
+    implementation "com.aromajoin.sdk:core:4.0.0"
+    implementation "com.aromajoin.sdk:android:4.0.0"
 }
 ```
 
@@ -229,7 +229,7 @@ For USB, disconnecting releases the USB connection; for BLE it closes the GATT c
 
 **No devices found over USB.** USB OTG must be supported, and the user has to grant USB permission for the device. `AndroidUSBController` reports this through `onFailed` rather than throwing.
 
-**Nothing comes out, but no error.** The internal booster is off. Pass `internalBooster: true`, or an `internalBoosterIntensity` above 0.
+**Nothing comes out, but no error.** The inner booster is off. Pass `innerBooster: true`, or an `innerBoosterIntensity` above 0.
 
 **The scent does not stop.** Update to 3.1.0. Earlier versions sent a malformed intensity-stop frame, so a shoot started with `shootWithIntensity*` could keep running. From 3.1.0 either `stopAllChambers()` or `stopAllChambersWithIntensity()` halts the device.
 

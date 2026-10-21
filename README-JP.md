@@ -2,14 +2,14 @@
 
 # Aroma Shooter SDK (Android)
 
-**Version 3.1.0**
+**Version 4.0.0**
 
 [![Maven Central](https://img.shields.io/maven-central/v/com.aromajoin.sdk/android?style=flat-square&label=Maven%20Central)](https://central.sonatype.com/artifact/com.aromajoin.sdk/android)
 [![License](https://img.shields.io/badge/license-Apache%202-4EB1BA.svg?style=flat-square)](https://www.apache.org/licenses/LICENSE-2.0.html)
 
 [Aroma Shooter](https://aromajoin.com/products/aroma-shooter)を**Bluetooth LE**および**USB**経由で接続・制御するためのAndroid向けSDKです。
 
-> **重要 — 香りを噴射するには内部ブースターが必要です。** 噴射のたびに有効にしてください。シンプルAPIでは `internalBooster: true`、強度APIでは `internalBoosterIntensity > 0` を指定します。内部ブースターがオフの場合、香りは出ません。
+> **重要 — 香りを噴射するには inner booster が必要です。** 噴射のたびに有効にしてください。シンプルAPIでは `innerBooster: true`、強度APIでは `innerBoosterIntensity > 0` を指定します。inner booster がオフの場合、香りは出ません。
 
 利用する接続方式に応じてコントローラーを選び、そのコントローラーを直接呼び出します。
 
@@ -66,8 +66,8 @@
 
 ```gradle
 dependencies {
-    implementation "com.aromajoin.sdk:core:3.1.0"
-    implementation "com.aromajoin.sdk:android:3.1.0"
+    implementation "com.aromajoin.sdk:core:4.0.0"
+    implementation "com.aromajoin.sdk:android:4.0.0"
 }
 ```
 
@@ -229,7 +229,7 @@ USBの場合は切断によりUSB接続を解放します。BLEの場合はGATT�
 
 **USBデバイスが見つからない。** USB OTG対応が必要で、かつ当該デバイスへのUSB使用許可をユーザーが与える必要があります。`AndroidUSBController` はこれを例外ではなく `onFailed` で通知します。
 
-**エラーは出ないが香りが出ない。** 内部ブースターがオフになっています。`internalBooster: true`、または `internalBoosterIntensity` に0より大きい値を指定してください。
+**エラーは出ないが香りが出ない。** inner booster がオフになっています。`innerBooster: true`、または `innerBoosterIntensity` に0より大きい値を指定してください。
 
 **噴射が止まらない。** 3.1.0へ更新してください。それ以前のバージョンでは強度用の停止フレームが不正で、`shootWithIntensity*` で開始した噴射が止まらないことがありました。3.1.0以降は `stopAllChambers()` / `stopAllChambersWithIntensity()` のどちらでも停止します。
 
