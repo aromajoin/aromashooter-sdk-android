@@ -2,7 +2,7 @@
 
 # Aroma Shooter SDK (Android)
 
-**Version 4.0.0**
+**Version 4.0.1**
 
 [![Maven Central](https://img.shields.io/maven-central/v/com.aromajoin.sdk/android?style=flat-square&label=Maven%20Central)](https://central.sonatype.com/artifact/com.aromajoin.sdk/android)
 [![License](https://img.shields.io/badge/license-PolyForm%20Noncommercial-4EB1BA.svg?style=flat-square)](LICENSE)
@@ -66,8 +66,8 @@
 
 ```gradle
 dependencies {
-    implementation "com.aromajoin.sdk:core:4.0.0"
-    implementation "com.aromajoin.sdk:android:4.0.0"
+    implementation "com.aromajoin.sdk:core:4.0.1"
+    implementation "com.aromajoin.sdk:android:4.0.1"
 }
 ```
 
